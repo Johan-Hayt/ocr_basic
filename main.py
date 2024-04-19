@@ -36,8 +36,10 @@ def procesar_imagen(imagen_gris):
     prediccion_1 = np.flip(prediccion_1)
 
     clave = np.concatenate((prediccion_1[:,0], prediccion_1[4,1:]), axis=0)
+    clave_list_str = list(map(lambda x: str(x),a))
+    return  ''.join(clave_list_str)
 
-    return clave.tolist()
+
 
 @app.post("/predict/")
 async def predict(file: UploadFile = File(...)):
